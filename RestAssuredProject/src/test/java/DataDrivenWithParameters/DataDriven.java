@@ -1,4 +1,4 @@
-package RestAssured;
+package DataDrivenWithParameters;
 
 import static io.restassured.RestAssured.*;
 import org.json.simple.JSONObject;
@@ -34,5 +34,14 @@ public class DataDriven extends TestData{
 		then().
 			statusCode(200);
 	}
-	
+	@Parameters({"userId"})
+	@Test
+	public void test_delete1(int userId) {
+		System.out.println("Value for userId is :"+userId);
+		baseURI="http://localhost:3000/";
+		given().
+			delete("/users/"+userId).
+		then().
+			statusCode(200);
+	}
 }
